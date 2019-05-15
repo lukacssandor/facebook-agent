@@ -4,7 +4,6 @@
     <string name="avatar_desc">The facebook profile picture of the user.</string>
     <string name="facebook_app_id">343314016390213</string>
     <string name="fb_login_protocol_scheme">fb343314016390213</string>
-    <string name="textview">TextView</string>
     <string name="hometown_icon">Hometown icon</string>
     <string name="place_icon">Place icon</string>
     <string name="email_icon">Email icon</string>

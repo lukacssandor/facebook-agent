@@ -18,6 +18,7 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.login.LoginManager;
+
 import com.squareup.picasso.Picasso;
 
 import java.net.MalformedURLException;
@@ -36,6 +37,8 @@ public class PageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page);
+
+        getSupportActionBar().hide();
 
         Intent intent = getIntent();
 
@@ -61,8 +64,8 @@ public class PageActivity extends AppCompatActivity {
 
         try {
             URL avatar_picture_url = new URL("https://graph.facebook.com/" +
-                                            intent.getStringExtra(MainActivity.LOGIT_RESULT_ID) +
-                                            "/picture?width=250&height=250");
+                    intent.getStringExtra(MainActivity.LOGIT_RESULT_ID) +
+                    "/picture?width=250&height=250");
 
             Picasso.get()
                     .load(avatar_picture_url.toString())
@@ -94,7 +97,7 @@ public class PageActivity extends AppCompatActivity {
             hometown.setText(hometownSSB);
 
             String friendsCountStamp = "Friends: ";
-            String friendsCountStr = friendsCountStamp + intent.getStringExtra(MainActivity.LOGIN_RESULT_HOMETOWN);
+            String friendsCountStr = friendsCountStamp + intent.getStringExtra(MainActivity.LOGIN_RESULT_FRIENDS);
             SpannableStringBuilder friendsCountSSB = new SpannableStringBuilder(friendsCountStr);
             friendsCountSSB.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD), 0, friendsCountStamp.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             friendsCount.setText(friendsCountSSB);

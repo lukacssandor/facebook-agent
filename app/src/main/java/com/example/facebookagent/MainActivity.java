@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().hide();
+
         callbackManager = CallbackManager.Factory.create();
 
         try {
@@ -80,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
                 mDialog.show();
 
                 AccessToken accesstoken = loginResult.getAccessToken();
-                Log.d(TAG, accesstoken.toString());
                 GraphRequest request = GraphRequest.newMeRequest(accesstoken, new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
@@ -115,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendResult(JSONObject object) throws JSONException {
         intent = new Intent(this, PageActivity.class);
+        Log.d(TAG, object.getString("id"));
         intent.putExtra(LOGIT_RESULT_ID, object.getString("id"));
         intent.putExtra(LOGIN_RESULT_NAME, object.getString("name"));
         intent.putExtra(LOGIN_RESULT_EMAIL, object.getString("email"));
